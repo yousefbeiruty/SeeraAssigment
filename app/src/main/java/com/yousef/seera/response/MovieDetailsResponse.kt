@@ -1,4 +1,4 @@
-package com.ezatpanah.seera.response
+package com.yousef.seera.response
 
 import com.google.gson.annotations.SerializedName
 

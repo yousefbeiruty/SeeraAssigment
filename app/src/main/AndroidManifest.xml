@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ezatpanah.hilt_retrofit_paging_youtube">
+    package="com.yousef.seera">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:name="com.ezatpanah.hilt_retrofit_paging_youtube.MyApp"
+        android:name="com.yousef.seera.MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,7 +16,7 @@
         android:theme="@style/Theme.HiltRetrofitYoutube"
         tools:targetApi="31">
         <activity
-            android:name="com.ezatpanah.hilt_retrofit_paging_youtube.ui.MainActivity"
+            android:name="com.yousef.seera.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.ezatpanah.seera
+package com.yousef.seera
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Hilt-Retrofit-Youtube"
+rootProject.name = "Seera"
 include ':app'

@@ -1,6 +1,6 @@
-package com.ezatpanah.seera.repository
+package com.yousef.seera.repository
 
-import com.ezatpanah.seera.api.ApiServices
+import com.yousef.seera.api.ApiServices
 import javax.inject.Inject
 
 class ApiRepository @Inject constructor(

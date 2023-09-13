@@ -1,9 +1,9 @@
-package com.ezatpanah.seera.paging
+package com.yousef.seera.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.ezatpanah.seera.repository.ApiRepository
-import com.ezatpanah.seera.response.MoviesListResponse
+import com.yousef.seera.repository.ApiRepository
+import com.yousef.seera.response.MoviesListResponse
 import retrofit2.HttpException
 
 class MoviesPagingSource(

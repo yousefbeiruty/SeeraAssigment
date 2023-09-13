@@ -1,4 +1,4 @@
-package com.ezatpanah.seera.ui
+package com.yousef.seera.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,10 +11,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ezatpanah.seera.adapter.LoadMoreAdapter
-import com.ezatpanah.seera.adapter.MoviesAdapter
-import com.ezatpanah.seera.databinding.FragmentMoviesBinding
-import com.ezatpanah.seera.viewmodel.MoviesViewModel
+import com.yousef.seera.adapter.LoadMoreAdapter
+import com.yousef.seera.adapter.MoviesAdapter
+import com.yousef.seera.databinding.FragmentMoviesBinding
+import com.yousef.seera.viewmodel.MoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.ezatpanah.seera.ui
+package com.yousef.seera.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,10 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import coil.load
 import coil.size.Scale
-import com.ezatpanah.seera.R
-import com.ezatpanah.seera.databinding.FragmentMovieDetailesBinding
-import com.ezatpanah.seera.utils.POSTER_BASE_URL
-import com.ezatpanah.seera.viewmodel.MoviesViewModel
+import com.yousef.seera.R
+import com.yousef.seera.databinding.FragmentMovieDetailesBinding
+import com.yousef.seera.utils.POSTER_BASE_URL
+import com.yousef.seera.viewmodel.MoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -61,7 +61,7 @@ class MovieDetailsFragment : Fragment() {
                 tvMovieTitle.text = response.title
                 tvMovieTagLine.text = response.tagline
                 tvMovieDateRelease.text = response.releaseDate
-                tvMovieRating.text = response.voteAverage.toString()
+                tvMovieRating.rating = response.voteAverage.toFloat()
                 tvMovieRuntime.text = response.runtime.toString()
                 tvMovieBudget.text = response.budget.toString()
                 tvMovieRevenue.text = response.revenue.toString()

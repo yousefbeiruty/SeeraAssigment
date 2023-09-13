@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#AEBDCA"
+
     tools:context=".ui.MovieDetailsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +29,7 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgMovie"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="-30dp"
-        android:background="@drawable/bg_details"
+
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +59,9 @@
             android:id="@+id/scrollView2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.896"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -73,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:text="movie"
                     android:textAlignment="center"
-                    android:textColor="@color/txtColorTitle"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:text="sub title"
                     android:textAlignment="center"
-                    android:textColor="@color/txtColorTitle"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -138,15 +140,23 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvMovieDateReleaseTitle" />
 
-                <TextView
+                <RatingBar
                     android:id="@+id/tvMovieRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="8"
+                    android:layout_marginTop="40dp"
+                    android:numStars="5"
+                    android:rating="3.5"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
                     android:textColor="@color/txtColorOne"
                     android:textSize="12sp"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/tvMovieRatingTitle"
-                    app:layout_constraintStart_toEndOf="@+id/tvMovieRatingTitle" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/tvMovieRatingTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/tvMovieTagLine"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/tvMovieRuntimeTitle"
@@ -217,10 +227,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="Overview :"
+                    android:textColor="@color/iconColor"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:textColor="@color/iconColor"
                     app:layout_constraintTop_toBottomOf="@id/tvMovieRevenueTitle" />
 
                 <TextView
@@ -228,10 +238,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="overview ........."
+                    android:textColor="@color/txtColorOne"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvMovieOverviewTitle"
-                    android:textColor="@color/txtColorOne" />
+                    app:layout_constraintTop_toBottomOf="@id/tvMovieOverviewTitle" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

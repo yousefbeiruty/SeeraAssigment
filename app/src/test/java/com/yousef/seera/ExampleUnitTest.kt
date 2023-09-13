@@ -1,4 +1,4 @@
-package com.ezatpanah.seera
+package com.yousef.seera
 
 import org.junit.Test
 

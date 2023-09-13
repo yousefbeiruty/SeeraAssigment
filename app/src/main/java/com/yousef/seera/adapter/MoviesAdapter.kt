@@ -1,4 +1,4 @@
-package com.ezatpanah.seera.adapter
+package com.yousef.seera.adapter
 
 
 import android.annotation.SuppressLint
@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
-import com.ezatpanah.seera.R
-import com.ezatpanah.seera.databinding.ItemMoviesBinding
-import com.ezatpanah.seera.response.MoviesListResponse
-import com.ezatpanah.seera.utils.POSTER_BASE_URL
+import com.yousef.seera.R
+import com.yousef.seera.databinding.ItemMoviesBinding
+import com.yousef.seera.response.MoviesListResponse
+import com.yousef.seera.utils.POSTER_BASE_URL
 import javax.inject.Inject
 
 class MoviesAdapter @Inject() constructor() :

@@ -11,7 +11,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.ezatpanah.hilt_retrofit_paging_youtube"
+        applicationId "com.yousef.Seera"
         minSdk 21
         targetSdk 32
         versionCode 1

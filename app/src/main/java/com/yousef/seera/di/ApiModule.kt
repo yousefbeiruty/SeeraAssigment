@@ -1,10 +1,10 @@
-package com.ezatpanah.seera.di
+package com.yousef.seera.di
 
-import com.ezatpanah.seera.BuildConfig
-import com.ezatpanah.seera.api.ApiServices
-import com.ezatpanah.seera.utils.API_KEY
-import com.ezatpanah.seera.utils.BASE_URL
-import com.ezatpanah.seera.utils.NETWORK_TIMEOUT
+import com.yousef.seera.BuildConfig
+import com.yousef.seera.api.ApiServices
+import com.yousef.seera.utils.API_KEY
+import com.yousef.seera.utils.BASE_URL
+import com.yousef.seera.utils.NETWORK_TIMEOUT
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

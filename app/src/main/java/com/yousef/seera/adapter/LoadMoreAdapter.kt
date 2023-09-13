@@ -1,4 +1,4 @@
-package com.ezatpanah.seera.adapter
+package com.yousef.seera.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ezatpanah.seera.databinding.LoadMoreBinding
+import com.yousef.seera.databinding.LoadMoreBinding
 
 class LoadMoreAdapter(private val retry: () -> Unit) : LoadStateAdapter<LoadMoreAdapter.ViewHolder>() {
 

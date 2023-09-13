@@ -1,4 +1,4 @@
-package com.ezatpanah.seera.viewmodel
+package com.yousef.seera.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -6,9 +6,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.ezatpanah.seera.paging.MoviesPagingSource
-import com.ezatpanah.seera.repository.ApiRepository
-import com.ezatpanah.seera.response.MovieDetailsResponse
+import com.yousef.seera.paging.MoviesPagingSource
+import com.yousef.seera.repository.ApiRepository
+import com.yousef.seera.response.MovieDetailsResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
