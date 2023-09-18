@@ -13,6 +13,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yousef.seera.adapter.LoadMoreAdapter
 import com.yousef.seera.adapter.MoviesAdapter
+import com.yousef.seera.adapter.RevenueAdaptar
 import com.yousef.seera.adapter.TopRatedAdapter
 import com.yousef.seera.databinding.FragmentMoviesBinding
 import com.yousef.seera.viewmodel.MoviesViewModel
@@ -33,6 +34,9 @@ class MoviesFragment : Fragment() {
 
     @Inject
     lateinit var  topRatedAdapter: TopRatedAdapter
+
+    @Inject
+    lateinit var revenueAdaptar: RevenueAdaptar
 
     private val viewModel: MoviesViewModel by viewModels()
 
@@ -60,6 +64,22 @@ class MoviesFragment : Fragment() {
                 }
             }
 
+            lifecycleScope.launchWhenCreated {
+                viewModel.revenueList.collect{
+                    revenueAdaptar.submitData(it)
+                }
+            }
+            revenueAdaptar.setOnItemClickListener {
+                val direction = MoviesFragmentDirections.actionMoviesFragmentToMovieDetailsFragment(it.id)
+                findNavController().navigate(direction)
+            }
+
+            lifecycleScope.launchWhenCreated {
+                revenueAdaptar.loadStateFlow.collect{
+                    val state = it.refresh
+                    prgBarMovies.isVisible = state is LoadState.Loading
+                }
+            }
 
             moviesAdapter.setOnItemClickListener {
                 val direction = MoviesFragmentDirections.actionMoviesFragmentToMovieDetailsFragment(it.id)
@@ -95,6 +115,18 @@ class MoviesFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 adapter = topRatedAdapter
             }
+
+            rlRevenue.apply {
+                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                adapter = revenueAdaptar
+            }
+
+            rlRevenue.adapter=revenueAdaptar.withLoadStateFooter(
+                LoadMoreAdapter{
+                    revenueAdaptar.retry()
+                }
+            )
+
 
             rlMovies.adapter=moviesAdapter.withLoadStateFooter(
                 LoadMoreAdapter{

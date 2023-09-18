@@ -61,7 +61,9 @@ class MovieDetailsFragment : Fragment() {
                 tvMovieTitle.text = response.title
                 tvMovieTagLine.text = response.tagline
                 tvMovieDateRelease.text = response.releaseDate
-                tvMovieRating.rating = response.voteAverage.toFloat()
+                response.voteAverage?.let {
+                    tvMovieRating.rating=it.toFloat()
+                }
                 tvMovieRuntime.text = response.runtime.toString()
                 tvMovieBudget.text = response.budget.toString()
                 tvMovieRevenue.text = response.revenue.toString()

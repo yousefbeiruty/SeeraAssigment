@@ -4,55 +4,55 @@ import com.google.gson.annotations.SerializedName
 
 data class MovieDetailsResponse(
     @SerializedName("adult")
-    val adult: Boolean,
+    val adult: Boolean?=null,
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?=null,
     @SerializedName("belongs_to_collection")
-    val belongsToCollection: Any,
+    val belongsToCollection: Any?=null,
     @SerializedName("budget")
-    val budget: Int,
+    val budget: Int?=null,
     @SerializedName("genres")
     val genres: List<Genre>,
     @SerializedName("homepage")
-    val homepage: String,
+    val homepage: String?=null,
     @SerializedName("id")
-    val id: Int,
+    val id: Int?=null,
     @SerializedName("imdb_id")
-    val imdbId: String,
+    val imdbId: String?=null,
     @SerializedName("original_language")
-    val originalLanguage: String,
+    val originalLanguage: String?=null,
     @SerializedName("original_title")
-    val originalTitle: String,
+    val originalTitle: String?=null,
     @SerializedName("overview")
-    val overview: String,
+    val overview: String?=null,
     @SerializedName("popularity")
-    val popularity: Double,
+    val popularity: Double?=null,
     @SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String?=null,
     @SerializedName("production_companies")
-    val productionCompanies: List<ProductionCompany>,
+    val productionCompanies: List<ProductionCompany>?=null,
     @SerializedName("production_countries")
-    val productionCountries: List<ProductionCountry>,
+    val productionCountries: List<ProductionCountry>?=null,
     @SerializedName("release_date")
-    val releaseDate: String,
+    val releaseDate: String?=null,
     @SerializedName("revenue")
-    val revenue: Int,
+    val revenue: Number?=null,
     @SerializedName("runtime")
-    val runtime: Int,
+    val runtime: Int?=null,
     @SerializedName("spoken_languages")
-    val spokenLanguages: List<SpokenLanguage>,
+    val spokenLanguages: List<SpokenLanguage>?=null,
     @SerializedName("status")
-    val status: String,
+    val status: String?=null,
     @SerializedName("tagline")
-    val tagline: String,
+    val tagline: String?=null,
     @SerializedName("title")
-    val title: String,
+    val title: String?=null,
     @SerializedName("video")
-    val video: Boolean,
+    val video: Boolean?=null,
     @SerializedName("vote_average")
-    val voteAverage: Double,
+    val voteAverage: Double?=null,
     @SerializedName("vote_count")
-    val voteCount: Int
+    val voteCount: Int?=null
 ) {
     data class Genre(
         @SerializedName("id")

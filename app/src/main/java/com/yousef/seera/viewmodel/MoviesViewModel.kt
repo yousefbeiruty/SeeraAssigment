@@ -32,6 +32,13 @@ class MoviesViewModel @Inject constructor(private val repository: ApiRepository)
             response.body()?.results ?: emptyList()
         }
     }.flow.cachedIn(viewModelScope)
+
+    val revenueList=Pager(PagingConfig(1)) {
+        GenericPagingSource(repository) { page ->
+            val response = repository.getRevenueList(page)
+            response.body()?.results ?: emptyList()
+        }
+    }.flow.cachedIn(viewModelScope)
     //Api
     val detailsMovie = MutableLiveData<MovieDetailsResponse>()
     fun loadDetailsMovie(id: Int) = viewModelScope.launch {

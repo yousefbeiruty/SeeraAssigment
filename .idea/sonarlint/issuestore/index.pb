@@ -7,8 +7,6 @@ e
 5app/src/test/java/com/yousef/seera/ExampleUnitTest.kt,b/b/bb566598baf1f3b94e7b6475aac615fce0f7e22a
 e
 5app/src/main/java/com/yousef/seera/ui/MainActivity.kt,6/0/6018cabe5148cc035bb0b7bda19d89e5c9b53ecf
-s
-Capp/src/main/java/com/yousef/seera/response/MovieDetailsResponse.kt,1/7/17b8559a520f3f4cb8ce5ccb5c840578428da359
 ?
 settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
 [
