@@ -1,5 +1,6 @@
 package com.yousef.seera.paging
 
+import androidx.paging.LoadState
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.yousef.seera.repository.ApiRepository
@@ -9,6 +10,7 @@ import retrofit2.HttpException
 
 class GenericPagingSource<T : Any>(
     private val repository: ApiRepository,
+    private val error:(String)->Unit,
     private val pageFetcher: suspend (Int) -> List<T>
 ) : PagingSource<Int, T>() {
 
@@ -22,8 +24,10 @@ class GenericPagingSource<T : Any>(
                 nextKey = if (data.isEmpty()) null else currentPage + 1
             )
         } catch (e: Exception) {
+            error(e.message.toString())
             LoadResult.Error(e)
         } catch (exception: HttpException) {
+            error(exception.message.toString())
             LoadResult.Error(exception)
         }
     }

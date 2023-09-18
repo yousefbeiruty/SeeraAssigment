@@ -1,5 +1,9 @@
 package com.yousef.seera.ui
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,18 +15,18 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.BaseTransientBottomBar.ANIMATION_MODE_SLIDE
+import com.google.android.material.snackbar.Snackbar
 import com.yousef.seera.adapter.LoadMoreAdapter
 import com.yousef.seera.adapter.MoviesAdapter
 import com.yousef.seera.adapter.RevenueAdaptar
 import com.yousef.seera.adapter.TopRatedAdapter
 import com.yousef.seera.databinding.FragmentMoviesBinding
+import com.yousef.seera.utils.showAlertDialog
 import com.yousef.seera.viewmodel.MoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onErrorReturn
-import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class MoviesFragment : Fragment() {
@@ -52,6 +56,12 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+
+
+            viewModel.errorMessage.observe(viewLifecycleOwner){
+                    if(it.isNotEmpty())
+                        binding.root.showAlertDialog("Serever Error",it,requireContext())
+                }
 
             lifecycleScope.launchWhenCreated {
                 viewModel.moviesList.collect {
