@@ -1,16 +1,15 @@
 package com.yousef.seera.viewmodel
 
-import androidx.lifecycle.LiveData
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.yousef.seera.paging.MoviesPagingSource
+import com.yousef.seera.paging.GenericPagingSource
 import com.yousef.seera.repository.ApiRepository
 import com.yousef.seera.response.MovieDetailsResponse
-import com.yousef.seera.utils.TypeOfCarusel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,13 +20,18 @@ class MoviesViewModel @Inject constructor(private val repository: ApiRepository)
     val loading = MutableLiveData<Boolean>()
 
     val moviesList = Pager(PagingConfig(1)) {
-        MoviesPagingSource(repository,TypeOfCarusel.POPULAR)
+        GenericPagingSource(repository) { page ->
+            val response = repository.getPopularMoviesList(page)
+            response.body()?.results ?: emptyList()
+        }
     }.flow.cachedIn(viewModelScope)
 
-    val listTopRated=Pager(PagingConfig(1)) {
-        MoviesPagingSource(repository,TypeOfCarusel.TOP_RATED)
+    val listTopRated = Pager(PagingConfig(1)) {
+        GenericPagingSource(repository) { page ->
+            val response = repository.getTopRatedMoviesList(page)
+            response.body()?.results ?: emptyList()
+        }
     }.flow.cachedIn(viewModelScope)
-
     //Api
     val detailsMovie = MutableLiveData<MovieDetailsResponse>()
     fun loadDetailsMovie(id: Int) = viewModelScope.launch {
