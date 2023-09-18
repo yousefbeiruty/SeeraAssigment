@@ -13,9 +13,14 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yousef.seera.adapter.LoadMoreAdapter
 import com.yousef.seera.adapter.MoviesAdapter
+import com.yousef.seera.adapter.TopRatedAdapter
 import com.yousef.seera.databinding.FragmentMoviesBinding
 import com.yousef.seera.viewmodel.MoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onErrorReturn
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -26,7 +31,8 @@ class MoviesFragment : Fragment() {
     @Inject
     lateinit var moviesAdapter: MoviesAdapter
 
-
+    @Inject
+    lateinit var  topRatedAdapter: TopRatedAdapter
 
     private val viewModel: MoviesViewModel by viewModels()
 
@@ -48,6 +54,12 @@ class MoviesFragment : Fragment() {
                     moviesAdapter.submitData(it)
                 }
             }
+            lifecycleScope.launchWhenCreated {
+                viewModel.listTopRated.collect{
+                    topRatedAdapter.submitData(it)
+                }
+            }
+
 
             moviesAdapter.setOnItemClickListener {
                 val direction = MoviesFragmentDirections.actionMoviesFragmentToMovieDetailsFragment(it.id)
@@ -61,10 +73,27 @@ class MoviesFragment : Fragment() {
                 }
             }
 
+            topRatedAdapter.setOnItemClickListener {
+                val direction = MoviesFragmentDirections.actionMoviesFragmentToMovieDetailsFragment(it.id)
+                findNavController().navigate(direction)
+            }
+
+            lifecycleScope.launchWhenCreated {
+                topRatedAdapter.loadStateFlow.collect{
+                    val state = it.refresh
+                    prgBarMovies.isVisible = state is LoadState.Loading
+                }
+            }
+
 
             rlMovies.apply {
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 adapter = moviesAdapter
+            }
+
+            rltopRated.apply {
+                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                adapter = topRatedAdapter
             }
 
             rlMovies.adapter=moviesAdapter.withLoadStateFooter(
@@ -72,6 +101,12 @@ class MoviesFragment : Fragment() {
                     moviesAdapter.retry()
                 }
             )
+            rltopRated.adapter=topRatedAdapter.withLoadStateFooter(
+                LoadMoreAdapter{
+                    topRatedAdapter.retry()
+                }
+            )
+
 
         }
     }

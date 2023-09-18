@@ -17,6 +17,8 @@ interface ApiServices {
 
     fun getMovieDetails(@Path("movie_id") id: Int): Response<MovieDetailsResponse>
 
+    @GET("movie/top_rated")
+    suspend fun getTopRatedMoviesList(@Query("page") page: Int): Response<MoviesListResponse>
 
 
 }
